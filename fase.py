@@ -108,12 +108,12 @@ class Fase():
         :return: objeto do tipo Ponto
         """
 
-        pontos = [self._transformar_em_ponto(a) for a in self._passaros+self._obstaculos+self._porcos]
         for passaro in self._passaros:
             passaro.calcular_posicao(tempo)
             for alvo in self._obstaculos + self._porcos:
                 passaro.colidir(alvo, self.intervalo_de_colisao)
             passaro.colidir_com_chao()
+        pontos = [self._transformar_em_ponto(a) for a in self._passaros + self._obstaculos + self._porcos]
         return pontos
 
     def _transformar_em_ponto(self, ator):
